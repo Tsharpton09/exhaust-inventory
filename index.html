@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111827">
@@ -11,7 +13,10 @@
 </head>
 <body>
 <div class="app">
-<header><div><h1>Exhaust Inventory</h1><div class="sub">Simple stock control · <span id="cloudStatus">Connecting…</span></div></div><button class="primary" onclick="openAdd()">＋ Add Part</button></header>
+<header><div><h1 style="display:flex;align-items:center;gap:12px;">
+  <img src="icon.svg" alt="Exhaust Inventory" style="width:48px;height:48px;">
+  <span>Exhaust Inventory</span>
+</h1><div class="sub">Simple stock control · <span id="cloudStatus">Connecting…</span></div></div><button class="primary" onclick="openAdd()">＋ Add Part</button></header>
 <div id="setup" class="setup"><b>First setup:</b> Open this file and replace <code>https://ehfagfnnbdqixzpkwnny.supabase.co</code> and <code>PASTE_SUPABASE_PUBLISHABLE_KEY_HERE</code> near the bottom with your new Supabase values.</div>
 <div id="statusBox" class="statusbox">Testing Supabase connection…</div>
 <section class="cards"><div class="card"><div class="num" id="total">0</div><div class="label">PARTS</div></div><div class="card"><div class="num" id="lowCount">0</div><div class="label">NEED ORDERING</div></div><div class="card"><div class="num" id="units">0</div><div class="label">UNITS IN STOCK</div></div></section>
@@ -21,7 +26,7 @@
 <div id="list" class="list"></div>
 </div>
 
-<div class="modal" id="modal"><div class="sheet"><h2 id="modalTitle">Add Part</h2><form onsubmit="savePart(event)"><input type="hidden" id="editId"><div class="field"><label>Part Name</label><input id="name" required placeholder="2.5\" Exhaust Pipe Kit"></div><div class="field"><label>Part Number</label><input id="part" required placeholder="EPK-2500"></div><div class="field"><label>Make</label><select id="make" required><option value="ford">Ford</option><option value="chevy">Chevy</option><option value="ram">Ram</option></select></div><div class="field"><label>Order Parts Link</label><input id="orderLink" type="url" placeholder="https://example.com/order-this-part"><div class="small">Optional exact link for the Order Parts button.</div></div><div class="field"><label>Current Stock</label><input id="stock" type="number" min="0" step="1" required value="0"></div><div class="field"><label>Recommended Stock</label><input id="recommended" type="number" min="0" step="1" required value="0"></div><div class="formactions"><button type="button" class="ghost" onclick="closeModal()">Cancel</button><button class="primary">Save Part</button></div></form></div></div>
+<div class="modal" id="modal"><div class="sheet"><h2 id="modalTitle">Add Part</h2><form onsubmit="savePart(event)"><input type="hidden" id="editId"><div class="field"><label>Part Name</label><input id="name" required placeholder="2.5 Exhaust Pipe Kit"></div><div class="field"><label>Part Number</label><input id="part" required placeholder="000-00000"></div><div class="field"><label>Make</label><select id="make" required><option value="ford">Ford</option><option value="chevy">Chevy</option><option value="ram">Ram</option></select></div><div class="field"><label>Order Parts Link</label><input id="orderLink" type="url" placeholder="https://example.com/order-this-part"><div class="small">Optional exact link for the Order Parts button.</div></div><div class="field"><label>Current Stock</label><input id="stock" type="number" min="0" step="1" required value="0"></div><div class="field"><label>Recommended Stock</label><input id="recommended" type="number" min="0" step="1" required value="0"></div><div class="formactions"><button type="button" class="ghost" onclick="closeModal()">Cancel</button><button class="primary">Save Part</button></div></form></div></div>
 
 <script>
 // =========================
