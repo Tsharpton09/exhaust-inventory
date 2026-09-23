@@ -61,5 +61,13 @@ function exportCSV(){const rows=[['Part Name','Part Number','Make','Current Stoc
 $('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 loadInventory();
 </script>
+
+<script>
+setInterval(() => {
+  if (typeof loadInventory === "function") {
+    loadInventory();
+  }
+}, 10000);
+</script>
 </body>
 </html>
